@@ -55,11 +55,9 @@ class ClientesController extends BaseController {
 
 	public function destroy(int $id){
 
-
 		$cliente = Cliente::find($id);
 
 		if ($cliente != null){
-
 			Cliente::destroy($id);
 			return response()->json(['result' => 'O cliente '.$cliente->nome. ' foi excluido com sucesso!!'], 200);
 
