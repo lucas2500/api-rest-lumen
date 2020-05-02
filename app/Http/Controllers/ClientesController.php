@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 
 class ClientesController extends BaseController {
 
-	public function index() {
+	public function index(Request $request) {
 
-		$clientes = Cliente::all();
+		// $clientes = Cliente::all();
+
+	    // $clientes = Cliente::query()->offset($offset)->limit($request->per_page)->get;
+
+	    $clientes = Cliente::paginate($request->per_page);
 
 		return response()->json(['result' => $clientes], 200);
 	}
