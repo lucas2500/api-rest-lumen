@@ -16,7 +16,7 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->group(['prefix' => '/api'], function () use ($router) {
+$router->group(['prefix' => '/api', 'middleware' => 'auther'], function () use ($router) {
 
 //O primeiro parâmetro recebe o nome do método que será acessado na URL
 //O segundo parâmetro recebe o nome do arquivo do controller + o nome do método
@@ -29,4 +29,4 @@ $router->group(['prefix' => '/api'], function () use ($router) {
 	$router->delete('clientes/{id}', 'ClientesController@destroy');
 });
 
-
+$router->post('/api/login', 'TokenController@GerarToken');
